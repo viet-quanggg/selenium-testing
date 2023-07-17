@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.quangnv</groupId>
+    <artifactId>selenium-2-go</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>18</maven.compiler.source>
+        <maven.compiler.target>18</maven.compiler.target>
+        <exec.mainClass>org.quangnv.selenium.main.Selenium2Go</exec.mainClass>
+    </properties>
+    <!-- 
+    99.9% việc độ file pom.xml là việc độ ở mục <dependencies>
+    chỉ có 0,1% llaf độ ở mục <build> <plugins>
+    ở mục <dep> thì chungs ta khai báo các thư viện .jar
+    ta sẽ xàig tỏng app, thư viện .jar nay gọi là dependency
+    Khi ta khai báo 1 <dependency> lâtys từ mvnrepository.com
+    thì lúc build app maven sẽ tự động tải file .jar về 
+    local .m2\ vcaf tự add vào trong project
+    khi add vào project rồi, ta có quyền ài các class/hàm/method 
+    nằm trong thư viện vừa add vào. Xài = cách gõ tên class Ctrl-cách
+    ví dụ add dependency Selenium ta sẽ có trong tay các class quan trọng 
+    WebDriver, By, Element
+    VD add dep Junit ta sẽ có trong tay class Asertion để xanh đỏ
+    
+    Còn mục <build><plugin> là add những file .jar NHƯNG NHỮNG FILE NÀY KHÔNG LÀ CLASS ĐỂ DÙNG
+    MÀ MAVEN SẼ DÙNG NHỮNG CLASS CÓ TRONG .jar theo sytle plugin đẻ chạy cùng maven lúc run-time
+    để giúp maven việc gì đó.
+    
+    CHỐT HẠ:
+    <dependency> giúp mình viết code qua cac class 99% độ
+    <plugin> giúp maven làm việc gì đó 0,1% là độ!!!
+     MAVEN BẮT BUỘC PHẢI BIẾT KHI ĐI THỰC TẬP, ĐI LÀM, VÌ CÁC CTY KHÔNG XÀI ANT
+     
+    -->
+    <dependencies>
+        <!--     Ta se xai thu vien - dependency ten la Selenium. No chua cac class
+            dung de dieu khien trinh duyet thay con nguoi click click bang tay
+            Qua thu vien nay, trinh duyet duoc xem nhu laf CSDL chua cac tags
+               va trinh duyet duoc xem la 1 object co nhieu method/ham ben trong
+               Ban muon trinh duyet lam gi, thi cu cham goi ham ()
+                  vidu muon trinh duyet tra ve cai tag chua o nhap
+                     Moi tag duoc xem la 1 object luon, UI object co method/property
+        -->
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-api</artifactId>
+            <version>4.10.0</version>
+            <type>jar</type>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.10.0-M1</version>
+            <scope>test</scope>
+        </dependency>
+
+
+    </dependencies>
+    
+    <build>
+        <plugins>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.3.0</version>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.1.2</version>
+            </plugin>
+            
+        </plugins>
+    </build>
+</project>
